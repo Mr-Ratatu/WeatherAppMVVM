@@ -4,6 +4,7 @@ package com.weather.app.mvvm.data.model;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.weather.app.mvvm.utils.Constant;
 
 public class WeatherBody {
 
@@ -127,5 +128,15 @@ public class WeatherBody {
 
     public void setClouds(Clouds clouds) {
         this.clouds = clouds;
+    }
+
+    public String getWeatherCondition() {
+        String weatherCond = null;
+
+        for (int i = 0; i < weather.size(); i++) {
+            weatherCond = weather.get(i).getDescription();
+        }
+
+        return Constant.firstUpperCase(weatherCond);
     }
 }

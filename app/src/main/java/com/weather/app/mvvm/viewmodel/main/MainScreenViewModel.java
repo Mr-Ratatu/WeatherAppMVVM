@@ -4,6 +4,10 @@ import android.view.View;
 
 import com.weather.app.mvvm.R;
 import com.weather.app.mvvm.data.model.WeatherBody;
+import com.weather.app.mvvm.data.model.item.ListWeather;
+import com.weather.app.mvvm.data.model.item.ThreeHourWeatherBody;
+
+import java.util.List;
 
 import androidx.databinding.ObservableInt;
 import androidx.lifecycle.MutableLiveData;
@@ -12,15 +16,21 @@ import androidx.navigation.Navigation;
 
 public class MainScreenViewModel extends ViewModel {
     private MutableLiveData<WeatherBody> liveData;
+    private MutableLiveData<ThreeHourWeatherBody> listWeatherMutableLiveData;
     private MainScreenRepository mainScreenRepository;
 
     public MainScreenViewModel(String city) {
         mainScreenRepository = MainScreenRepository.getInstance();
         liveData = mainScreenRepository.getInfoWeather(city);
+        listWeatherMutableLiveData = mainScreenRepository.getThreeHourWeather(city);
     }
 
     public MutableLiveData<WeatherBody> getLiveData() {
         return liveData;
+    }
+
+    public MutableLiveData<ThreeHourWeatherBody> getListWeatherMutableLiveData() {
+        return listWeatherMutableLiveData;
     }
 
     public ObservableInt getLoading() {
