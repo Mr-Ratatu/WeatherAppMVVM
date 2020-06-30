@@ -1,10 +1,16 @@
 
 package com.weather.app.mvvm.data.model;
 
+import android.view.View;
+import android.widget.ImageView;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.weather.app.mvvm.R;
 import com.weather.app.mvvm.utils.Constant;
+
+import androidx.databinding.BindingAdapter;
 
 public class WeatherBody {
 
@@ -131,12 +137,11 @@ public class WeatherBody {
     }
 
     public String getWeatherCondition() {
-        String weatherCond = null;
-
-        for (int i = 0; i < weather.size(); i++) {
-            weatherCond = weather.get(i).getDescription();
-        }
-
-        return Constant.firstUpperCase(weatherCond);
+        return Constant.firstUpperCase(weather.get(0).getDescription());
     }
+
+    public String getWeatherIcon() {
+        return weather.get(0).getIcon();
+    }
+
 }

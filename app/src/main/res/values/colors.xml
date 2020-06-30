@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#FF9800</color>
     <color name="background_color">#00BCD4</color>
+    <color name="list_city_background">#12243c</color>
 </resources>

@@ -8,7 +8,7 @@
         <variable
             name="city"
             type="com.weather.app.mvvm.data.model.City" />
-        
+
         <variable
             name="itemViewModel"
             type="com.weather.app.mvvm.viewmodel.CityItemViewModel" />
@@ -18,9 +18,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="2dp"
         android:layout_marginBottom="10dp"
-        app:cardBackgroundColor="#20404040"
+        app:cardBackgroundColor="#50404040"
+        app:cardElevation="0.5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,6 +28,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/ripple_effect_for_button"
             android:onClick="@{(view) -> itemViewModel.findWeatherInCity(view, city.cityName)}"
             android:padding="10dp">
 
@@ -44,10 +45,11 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:text="@{city.cityName}"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
-                android:layout_marginStart="15dp"
+                tools:text="Название города"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
                 app:layout_constraintTop_toTopOf="@+id/imageView5" />

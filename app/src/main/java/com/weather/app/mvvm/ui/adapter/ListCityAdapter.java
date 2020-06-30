@@ -1,7 +1,6 @@
 package com.weather.app.mvvm.ui.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.weather.app.mvvm.R;
@@ -17,15 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ListCityAdapter extends RecyclerView.Adapter<ListCityAdapter.ListCityViewHolder> {
 
-    private List<City> list;
+    private List<City> cityList;
 
     public ListCityAdapter(List<City> list) {
-        this.list = list;
+        this.cityList = list;
     }
 
-    public void setList(List<City> list) {
-        this.list = list;
+    public void setCityList(List<City> cityList) {
+        this.cityList = cityList;
         notifyDataSetChanged();
+    }
+
+    public List<City> getCityList() {
+        return cityList;
     }
 
     @NonNull
@@ -39,12 +42,12 @@ public class ListCityAdapter extends RecyclerView.Adapter<ListCityAdapter.ListCi
 
     @Override
     public void onBindViewHolder(@NonNull ListCityViewHolder holder, int position) {
-        holder.bind(list.get(position));
+        holder.bind(cityList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return cityList.size();
     }
 
     class ListCityViewHolder extends RecyclerView.ViewHolder {

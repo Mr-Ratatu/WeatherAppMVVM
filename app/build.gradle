@@ -83,4 +83,7 @@ dependencies {
     implementation "android.arch.persistence.room:rxjava2:1.1.1"
     implementation 'androidx.room:room-rxjava2:2.2.5'
 
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }

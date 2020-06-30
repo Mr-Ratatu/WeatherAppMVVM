@@ -2,6 +2,7 @@ package com.weather.app.mvvm.ui.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -9,10 +10,15 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.weather.app.mvvm.R;
 import com.weather.app.mvvm.data.model.WeatherBody;
@@ -37,7 +43,7 @@ public class MainScreenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main_screen, container, false);
 
         mainScreenViewModel = new ViewModelProvider(this, new MainScreenFactory(getNameCity())).get(MainScreenViewModel.class);
@@ -74,5 +80,6 @@ public class MainScreenFragment extends Fragment {
         recyclerView.setAdapter(listCityAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
     }
+
 
 }

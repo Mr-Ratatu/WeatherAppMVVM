@@ -41,6 +41,14 @@ public class CityListRepository {
                 .subscribe());
     }
 
+    public void deleteItem(City city) {
+        compositeDisposable.add(listCityDao.deleteItem(city)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError(Throwable::printStackTrace)
+                .subscribe());
+    }
+
     @SuppressLint("CheckResult")
     public Observable<List<City>> getAllListCity() {
         return listCityDao.getAllListCity()

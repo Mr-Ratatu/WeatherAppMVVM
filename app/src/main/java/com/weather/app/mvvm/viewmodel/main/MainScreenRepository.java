@@ -11,6 +11,7 @@ import com.weather.app.mvvm.utils.Constant;
 
 import java.util.List;
 
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableInt;
 import androidx.lifecycle.MutableLiveData;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -25,6 +26,8 @@ public class MainScreenRepository {
 
     private ObservableInt loading;
     private ObservableInt content;
+    private ObservableInt error;
+    private ObservableBoolean isLoading;
 
     public static MainScreenRepository getInstance() {
         if (instance == null) {
@@ -37,8 +40,11 @@ public class MainScreenRepository {
     private MainScreenRepository() {
         apiWeatherService = ApiClient.getInstance().getApiService();
         compositeDisposable = new CompositeDisposable();
+
         loading = new ObservableInt();
         content = new ObservableInt();
+        error = new ObservableInt();
+        isLoading = new ObservableBoolean();
     }
 
     public MutableLiveData<WeatherBody> getInfoWeather(String city) {
@@ -46,6 +52,9 @@ public class MainScreenRepository {
 
         loading.set(View.VISIBLE);
         content.set(View.GONE);
+        error.set(View.GONE);
+        isLoading.set(true);
+
         compositeDisposable.add(apiWeatherService.getApiWeather(city, Constant.UNITS_METRIC, Constant.LANG)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -53,7 +62,16 @@ public class MainScreenRepository {
                     liveData.setValue(weatherBody);
                     content.set(View.VISIBLE);
                     loading.set(View.GONE);
-                }, Throwable::printStackTrace));
+                    isLoading.set(false);
+
+                }, throwable -> {
+                    error.set(View.VISIBLE);
+                    content.set(View.GONE);
+                    loading.set(View.GONE);
+                    isLoading.set(false);
+
+                    throwable.printStackTrace();
+                }));
 
         return liveData;
     }
@@ -75,5 +93,13 @@ public class MainScreenRepository {
 
     public ObservableInt getContent() {
         return content;
+    }
+
+    public ObservableBoolean isLoading() {
+        return isLoading;
+    }
+
+    public ObservableInt getError() {
+        return error;
     }
 }

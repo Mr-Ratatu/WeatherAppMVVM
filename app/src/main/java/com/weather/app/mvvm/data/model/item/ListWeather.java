@@ -62,23 +62,12 @@ public class ListWeather {
     public String getHourWeather() {
         String[] split = dtTxt.split("\\s");
         String[] split1 = split[1].split(":00");
-        Log.d("date", "getHourWeather: " + split[0]);
 
         return split1[0] + ":00";
     }
 
-    /*public String getDayOfWeek() {
-        String[] week = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Субота", "Воскресенье"};
-
-        String[] split = dtTxt.split("\\s");
-        String[] split1 = split[0].split("-");
-        Date date = new Date(split[0]);
-
-        Calendar c = Calendar.getInstance();
-        c.setTime(25);
-        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-
-        return week[dayOfWeek-1];
-    }*/
+    public String getIconWeather() {
+        return weather.get(0).getIcon();
+    }
 
 }

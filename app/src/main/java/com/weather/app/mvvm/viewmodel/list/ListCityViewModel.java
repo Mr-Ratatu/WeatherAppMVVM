@@ -41,6 +41,14 @@ public class ListCityViewModel extends AndroidViewModel {
         listCityFragment.showScreenDialog();
     }
 
+    public void deleteItem(City city) {
+        cityListRepository.deleteItem(city);
+    }
+
+    public void insertItem(City city) {
+        cityListRepository.insert(city);
+    }
+
     public CompositeDisposable getCompositeDisposable() {
         return compositeDisposable;
     }

@@ -24,19 +24,19 @@
             android:text="@{itemWeather.hourWeather}"
             android:textColor="@android:color/white"
             android:textSize="24sp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"
             tools:text="Четверг" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/materialTextView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@{itemWeather.hourWeather}"
             android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,17 +48,18 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/cloud"
             app:layout_constraintEnd_toEndOf="@+id/materialTextView11"
             app:layout_constraintStart_toStartOf="@+id/materialTextView11"
-            app:layout_constraintTop_toBottomOf="@+id/materialTextView11" />
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView11"
+            app:setWeatherIcon="@{itemWeather.iconWeather}"
+            tools:src="@drawable/cloud" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/white"
             android:text="@{itemWeather.main.ceilTemperature}"
+            android:textColor="@android:color/white"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@+id/imageView6"
             app:layout_constraintStart_toStartOf="@+id/imageView6"

@@ -4,11 +4,10 @@ import android.view.View;
 
 import com.weather.app.mvvm.R;
 import com.weather.app.mvvm.data.model.WeatherBody;
-import com.weather.app.mvvm.data.model.item.ListWeather;
 import com.weather.app.mvvm.data.model.item.ThreeHourWeatherBody;
 
-import java.util.List;
-
+import androidx.appcompat.widget.PopupMenu;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableInt;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -18,9 +17,42 @@ public class MainScreenViewModel extends ViewModel {
     private MutableLiveData<WeatherBody> liveData;
     private MutableLiveData<ThreeHourWeatherBody> listWeatherMutableLiveData;
     private MainScreenRepository mainScreenRepository;
+    private String city;
 
     public MainScreenViewModel(String city) {
+        this.city = city;
         mainScreenRepository = MainScreenRepository.getInstance();
+        liveData = mainScreenRepository.getInfoWeather(city);
+        listWeatherMutableLiveData = mainScreenRepository.getThreeHourWeather(city);
+    }
+
+    public void openListCityClick(View view) {
+        Navigation.findNavController(view).navigate(R.id.action_mainScreenFragment_to_listCityFragment);
+    }
+
+    public void showPopupMenu(View view) {
+        PopupMenu popup = new PopupMenu(view.getContext(), view);
+        popup.inflate(R.menu.tollbar_menu);
+
+        popup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.settings:
+
+                    return true;
+
+                case R.id.share:
+
+                    return true;
+
+                default:
+                    return false;
+            }
+        });
+
+        popup.show();
+    }
+
+    public void swipeRefreshList() {
         liveData = mainScreenRepository.getInfoWeather(city);
         listWeatherMutableLiveData = mainScreenRepository.getThreeHourWeather(city);
     }
@@ -41,7 +73,12 @@ public class MainScreenViewModel extends ViewModel {
         return mainScreenRepository.getContent();
     }
 
-    public void openListCityClick(View view) {
-        Navigation.findNavController(view).navigate(R.id.action_mainScreenFragment_to_listCityFragment);
+    public ObservableInt getError() {
+        return mainScreenRepository.getError();
     }
+
+    public ObservableBoolean getIsLoading() {
+        return mainScreenRepository.isLoading();
+    }
+
 }
