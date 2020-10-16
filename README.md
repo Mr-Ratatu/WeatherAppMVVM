@@ -12,7 +12,7 @@
 * Minimum SDK 23
 * MVVM Architecture
 * Android Architecture Components (Lifecycle, LiveData, ViewModel, Room Persistence)
-* Material Design & Animations
+* Material Design
 * DataBidning
 * Android Navigation Architecture
 * Retrofit2 & Gson for constructing the REST API
