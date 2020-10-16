@@ -10,6 +10,7 @@ import androidx.room.RoomDatabase;
 
 @Database(entities = {City.class}, version = 1, exportSchema = false)
 public abstract class ListCityManager extends RoomDatabase {
+
     private static final String DB_NAME = "item_db";
     private static ListCityManager instance;
 

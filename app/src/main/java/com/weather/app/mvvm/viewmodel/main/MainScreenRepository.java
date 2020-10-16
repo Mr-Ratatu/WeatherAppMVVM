@@ -1,5 +1,6 @@
 package com.weather.app.mvvm.viewmodel.main;
 
+import android.util.Log;
 import android.view.View;
 
 import com.weather.app.mvvm.data.model.WeatherBody;
@@ -16,8 +17,9 @@ import androidx.databinding.ObservableInt;
 import androidx.lifecycle.MutableLiveData;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.weather.app.mvvm.utils.Constant.TAG;
 
 public class MainScreenRepository {
     private static MainScreenRepository instance;

@@ -47,7 +47,7 @@ public class ListCityAdapter extends RecyclerView.Adapter<ListCityAdapter.ListCi
 
     @Override
     public int getItemCount() {
-        return cityList.size();
+        return cityList != null ? cityList.size() : 0;
     }
 
     class ListCityViewHolder extends RecyclerView.ViewHolder {

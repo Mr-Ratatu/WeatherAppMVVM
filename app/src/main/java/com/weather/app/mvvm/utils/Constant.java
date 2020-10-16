@@ -1,6 +1,7 @@
 package com.weather.app.mvvm.utils;
 
 public class Constant {
+    public static final String TAG = "data";
     public static final String UNITS_METRIC = "metric";
     public static final String LANG = "ru";
     public static final String BASE_URL = "https://api.openweathermap.org/data/2.5/";

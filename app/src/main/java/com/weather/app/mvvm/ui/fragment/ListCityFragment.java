@@ -27,14 +27,9 @@ import java.util.List;
 
 public class ListCityFragment extends Fragment {
 
-    private List<City> list;
     private ListCityViewModel listCityViewModel;
     private ListCityAdapter listCityAdapter;
     private FragmentListCityBinding binding;
-
-    public static ListCityFragment newInstance() {
-        return new ListCityFragment();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,20 +56,18 @@ public class ListCityFragment extends Fragment {
     }
 
     private void initializeRecycler(RecyclerView recyclerView) {
-        list = new ArrayList<>();
+        List<City> list = new ArrayList<>();
         listCityAdapter = new ListCityAdapter(list);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(listCityAdapter);
         recyclerView.setHasFixedSize(true);
 
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(swipeToDelete());
-        itemTouchHelper.attachToRecyclerView(recyclerView);
+        new ItemTouchHelper(swipeToDelete()).attachToRecyclerView(recyclerView);
     }
 
     public void showScreenDialog() {
-        AddCityListDialog addCityListDialog = new AddCityListDialog();
-        addCityListDialog.show(getChildFragmentManager(), "dialog");
+        new AddCityListDialog().show(getChildFragmentManager(), "dialog");
     }
 
     private ItemTouchHelper.SimpleCallback swipeToDelete() {

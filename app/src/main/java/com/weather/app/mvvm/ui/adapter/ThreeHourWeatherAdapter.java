@@ -43,7 +43,7 @@ public class ThreeHourWeatherAdapter extends RecyclerView.Adapter<ThreeHourWeath
 
     @Override
     public int getItemCount() {
-        return listWeathers.size();
+        return listWeathers != null ? listWeathers.size() : 0;
     }
 
     static class ThreeHourWeatherViewHolder extends RecyclerView.ViewHolder {

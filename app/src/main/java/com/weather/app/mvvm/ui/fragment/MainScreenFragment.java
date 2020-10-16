@@ -69,7 +69,7 @@ public class MainScreenFragment extends Fragment {
         try {
             return getArguments().getString(Constant.CITY);
         } catch (Exception e) {
-            return "Дагестанские Огни";
+            return "Ростов-на-Дону";
         }
     }
 

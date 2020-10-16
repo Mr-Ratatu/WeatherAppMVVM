@@ -10,8 +10,6 @@ import com.google.gson.annotations.SerializedName;
 import com.weather.app.mvvm.R;
 import com.weather.app.mvvm.utils.Constant;
 
-import androidx.databinding.BindingAdapter;
-
 public class WeatherBody {
 
     @SerializedName("weather")
