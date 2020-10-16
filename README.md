@@ -1,6 +1,6 @@
 # WeatherAppMVVM
 
-#### WeatherAppMVVM - приложение для просмотра погода на ближайшие 5 дней. Все данные берутся с API OpenWeather.
+#### WeatherAppMVVM - приложение для просмотра погоды на ближайшие 5 дней. Все данные берутся с API OpenWeather.
 
 ---
 
